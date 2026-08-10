@@ -5,18 +5,16 @@ import { useState } from "react";
 
 type InstrumentReadoutProps = {
   stack: string[];
-  accent?: "phosphor" | "amber";
 };
+
+const spectrum = ["phosphor", "cyan", "violet", "magenta", "amber"] as const;
 
 const barHeights = (seed: number) => {
   const pattern = [3, 6, 4, 8, 5, 7, 2, 6];
   return pattern.map((value, index) => ((value + seed * (index + 1)) % 8) + 3);
 };
 
-export default function InstrumentReadout({
-  stack,
-  accent = "phosphor",
-}: InstrumentReadoutProps) {
+export default function InstrumentReadout({ stack }: InstrumentReadoutProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
@@ -24,6 +22,7 @@ export default function InstrumentReadout({
       {stack.map((item, index) => {
         const heights = barHeights(item.length + index);
         const isActive = activeIndex === index;
+        const accent = spectrum[index % spectrum.length];
 
         return (
           <HStack

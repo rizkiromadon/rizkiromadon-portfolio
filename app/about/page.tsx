@@ -1,6 +1,21 @@
+import type { Metadata } from "next";
 import { Box, VStack } from "@chakra-ui/react";
 import AboutContent from "@/components/sections/AboutContent";
 import SectionHeading from "@/components/ui/SectionHeading";
+import site from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: `${site.role} based in ${site.location}. ${site.bio}`,
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: `About — ${site.name}`,
+    description: `${site.role} based in ${site.location}. ${site.bio}`,
+    url: `${site.website}/about`,
+  },
+};
 
 export default function AboutPage() {
   return (
@@ -11,7 +26,7 @@ export default function AboutPage() {
       paddingY={{ base: 12, md: 16 }}
     >
       <VStack align="stretch" spacing={10}>
-        <SectionHeading eyebrow="Observer log" title="Tentang" />
+        <SectionHeading as="h1" eyebrow="Observer log" eyebrowColor="violet" title="About" />
         <AboutContent />
       </VStack>
     </Box>

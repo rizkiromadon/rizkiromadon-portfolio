@@ -1,5 +1,5 @@
 import { extendTheme, type ThemeConfig } from "@chakra-ui/react";
-import colors from "./foundations/colors";
+import colors, { gradients } from "./foundations/colors";
 import fonts, {
   fontSizes,
   lineHeights,
@@ -18,6 +18,8 @@ const styles = {
   global: {
     body: {
       bg: "void",
+      backgroundImage: gradients.auroraGlow,
+      backgroundAttachment: "fixed",
       color: "signal",
     },
     "*::selection": {
@@ -26,7 +28,7 @@ const styles = {
     },
     "*:focus-visible": {
       outline: "2px solid",
-      outlineColor: "phosphor",
+      outlineColor: "cyan",
       outlineOffset: "2px",
     },
   },

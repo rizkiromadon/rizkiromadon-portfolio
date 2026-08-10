@@ -13,6 +13,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <ChakraLink
           href={project.link}
           isExternal
+          aria-label={`View ${project.name} repository on GitHub (opens in a new tab)`}
           _hover={{ textDecoration: "none" }}
         >
           <Heading

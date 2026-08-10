@@ -4,12 +4,16 @@ type SectionHeadingProps = {
   eyebrow?: string;
   title: string;
   align?: "left" | "center";
+  as?: "h1" | "h2";
+  eyebrowColor?: "amber" | "phosphor" | "cyan" | "violet" | "magenta";
 };
 
 export default function SectionHeading({
   eyebrow,
   title,
   align = "left",
+  as = "h2",
+  eyebrowColor = "amber",
 }: SectionHeadingProps) {
   return (
     <VStack
@@ -23,13 +27,13 @@ export default function SectionHeading({
           fontSize="xs"
           letterSpacing="widest"
           textTransform="uppercase"
-          color="amber"
+          color={eyebrowColor}
         >
           {eyebrow}
         </Text>
       ) : null}
       <Heading
-        as="h2"
+        as={as}
         fontFamily="var(--font-space-mono), monospace"
         fontSize={{ base: "2xl", md: "3xl" }}
         lineHeight="tight"

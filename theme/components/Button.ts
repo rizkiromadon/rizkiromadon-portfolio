@@ -1,4 +1,5 @@
 import { defineStyle, defineStyleConfig } from "@chakra-ui/react";
+import { gradients } from "../foundations/colors";
 
 const phosphorOutline = defineStyle({
   border: "1px solid",
@@ -10,15 +11,40 @@ const phosphorOutline = defineStyle({
   letterSpacing: "wide",
   textTransform: "uppercase",
   fontSize: "sm",
-  transition: "background-color 160ms ease, color 160ms ease",
+  transition: "background-color 160ms ease, color 160ms ease, box-shadow 160ms ease",
   _hover: {
     background: "phosphor",
     color: "void",
+    boxShadow: "0 0 20px rgba(143, 227, 207, 0.45)",
   },
   _focusVisible: {
     boxShadow: "none",
     outline: "2px solid",
     outlineColor: "phosphor",
+    outlineOffset: "2px",
+  },
+});
+
+const spectrumSolid = defineStyle({
+  backgroundImage: gradients.signalSpectrum,
+  color: "void",
+  borderRadius: "2px",
+  fontFamily: "var(--font-space-mono), monospace",
+  letterSpacing: "wide",
+  textTransform: "uppercase",
+  fontSize: "sm",
+  fontWeight: "bold",
+  backgroundSize: "160% 100%",
+  backgroundPosition: "0% 0%",
+  transition: "background-position 300ms ease, box-shadow 300ms ease",
+  _hover: {
+    backgroundPosition: "100% 0%",
+    boxShadow: "0 0 24px rgba(180, 140, 242, 0.45)",
+  },
+  _focusVisible: {
+    boxShadow: "none",
+    outline: "2px solid",
+    outlineColor: "violet",
     outlineOffset: "2px",
   },
 });
@@ -53,7 +79,7 @@ const ghost = defineStyle({
   borderRadius: "2px",
   transition: "color 160ms ease",
   _hover: {
-    color: "signal",
+    color: "magenta",
     background: "transparent",
   },
   _focusVisible: {
@@ -71,6 +97,7 @@ const ButtonTheme = defineStyleConfig({
   },
   variants: {
     phosphorOutline,
+    spectrumSolid,
     amberSolid,
     ghost,
   },

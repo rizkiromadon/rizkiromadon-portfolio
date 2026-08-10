@@ -4,6 +4,7 @@ import { Box, Button, HStack, Heading, Text, VStack } from "@chakra-ui/react";
 import { motion, useReducedMotion, type Transition } from "framer-motion";
 import NextLink from "next/link";
 import site from "@/lib/site";
+import { gradients } from "@/theme/foundations/colors";
 
 const heroTransition: Transition = { duration: 0.6, ease: "easeOut" };
 
@@ -31,8 +32,10 @@ export default function HeroSection() {
           fontFamily="var(--font-space-mono), monospace"
           fontSize={{ base: "4xl", md: "5xl" }}
           lineHeight="tight"
-          color="signal"
           maxWidth="18ch"
+          backgroundImage={gradients.signalSpectrum}
+          backgroundClip="text"
+          sx={{ WebkitTextFillColor: "transparent" }}
         >
           {site.name}
         </Heading>
@@ -43,22 +46,24 @@ export default function HeroSection() {
           color="dim"
           maxWidth="52ch"
         >
-          {site.bio} Mencatat proyek dari {site.location} seperti pengamat
-          yang mencatat sinyal dari observatorium.
+          {site.bio} Logging projects from {site.location}, like an observer
+          tracking signals from the observatory.
         </Text>
         <HStack spacing={4} paddingTop={2}>
-          <Button as={NextLink} href="/projects" variant="phosphorOutline">
-            Lihat Proyek
+          <Button as={NextLink} href="/projects" variant="spectrumSolid">
+            View Projects
           </Button>
           <Button as={NextLink} href="/contact" variant="ghost">
-            Kontak
+            Contact
           </Button>
         </HStack>
         <Box
           width="100%"
           maxWidth="360px"
-          height="1px"
-          bg="whiteAlpha.100"
+          height="2px"
+          backgroundImage={gradients.signalSpectrum}
+          opacity={0.5}
+          borderRadius="full"
           marginTop={4}
         />
       </VStack>

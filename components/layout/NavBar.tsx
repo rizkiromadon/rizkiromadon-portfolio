@@ -3,13 +3,14 @@
 import { Box, Flex, HStack, Link as ChakraLink, Text } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
+import site from "@/lib/site";
 
 const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
+  { href: "/", label: "Home", accent: "phosphor" },
+  { href: "/projects", label: "Projects", accent: "cyan" },
+  { href: "/about", label: "About", accent: "violet" },
+  { href: "/contact", label: "Contact", accent: "magenta" },
+] as const;
 
 export default function NavBar() {
   const pathname = usePathname();
@@ -17,6 +18,7 @@ export default function NavBar() {
   return (
     <Box
       as="nav"
+      aria-label="Main navigation"
       position="sticky"
       top={0}
       zIndex={10}
@@ -35,11 +37,12 @@ export default function NavBar() {
         <ChakraLink
           as={NextLink}
           href="/"
+          aria-label={`${site.name} — Home`}
           fontFamily="var(--font-space-mono), monospace"
           fontSize="sm"
           letterSpacing="wide"
           color="signal"
-          _hover={{ color: "phosphor", textDecoration: "none" }}
+          _hover={{ color: "cyan", textDecoration: "none" }}
         >
           RIZKI ROMADON
         </ChakraLink>
@@ -55,12 +58,13 @@ export default function NavBar() {
                 <ChakraLink
                   as={NextLink}
                   href={item.href}
+                  aria-current={isActive ? "page" : undefined}
                   fontFamily="var(--font-space-mono), monospace"
                   fontSize="xs"
                   letterSpacing="wider"
                   textTransform="uppercase"
-                  color={isActive ? "phosphor" : "dim"}
-                  _hover={{ color: "phosphor", textDecoration: "none" }}
+                  color={isActive ? item.accent : "dim"}
+                  _hover={{ color: item.accent, textDecoration: "none" }}
                   transition="color 160ms ease"
                 >
                   <Text as="span">{item.label}</Text>

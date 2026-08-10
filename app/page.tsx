@@ -10,7 +10,7 @@ export default function HomePage() {
       <HeroSection />
       <VStack align="stretch" spacing={8} paddingBottom={24}>
         <Box display="flex" justifyContent="space-between" alignItems="flex-end" flexWrap="wrap" gap={4}>
-          <SectionHeading eyebrow="Recent transmissions" title="Proyek" />
+          <SectionHeading eyebrow="Recent transmissions" title="Projects" />
           <ChakraLink
             as={NextLink}
             href="/projects"
@@ -19,7 +19,7 @@ export default function HomePage() {
             color="phosphor"
             _hover={{ color: "amber", textDecoration: "none" }}
           >
-            Lihat semua →
+            View all →
           </ChakraLink>
         </Box>
         <ProjectGrid />

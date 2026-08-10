@@ -5,14 +5,14 @@ import site from "@/lib/site";
 export default function AboutContent() {
   return (
     <VStack align="flex-start" spacing={8} maxWidth="640px">
-      <StatusBadge label="Observer profile" tone="phosphor" />
+      <StatusBadge label="Observer profile" tone="violet" />
       <Text
         fontFamily="var(--font-inter), sans-serif"
         fontSize={{ base: "md", md: "lg" }}
         lineHeight="relaxed"
         color="signal"
       >
-        {site.name} adalah {site.bio.charAt(0).toLowerCase() + site.bio.slice(1)}
+        {site.name} is a {site.role}. {site.bio}
       </Text>
       <Text
         fontFamily="var(--font-inter), sans-serif"
@@ -20,9 +20,9 @@ export default function AboutContent() {
         lineHeight="relaxed"
         color="dim"
       >
-        Berbasis di {site.location}, aktivitas dan proyek dicatat secara
-        berkala di GitHub — dari eksperimen backend kecil hingga antarmuka
-        yang menyertainya.
+        Based in {site.location}, work and side projects are logged
+        regularly on GitHub — from small backend experiments to the
+        interfaces built around them.
       </Text>
       <Box
         border="1px solid"
@@ -39,7 +39,7 @@ export default function AboutContent() {
             textTransform="uppercase"
             color="dim"
           >
-            Koordinat
+            Coordinates
           </Text>
           <ChakraLink
             href={site.github}

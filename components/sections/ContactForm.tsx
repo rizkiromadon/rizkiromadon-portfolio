@@ -7,28 +7,28 @@ const channels = [
     label: "GitHub",
     value: site.githubHandle,
     href: site.github,
-    note: "Kode, proyek, dan riwayat commit.",
+    note: "Code, projects, and commit history.",
   },
   {
     label: "Website",
     value: site.websiteLabel,
     href: site.website,
-    note: "Halaman utama dan tautan lainnya.",
+    note: "Main site and other links.",
   },
 ];
 
 export default function ContactForm() {
   return (
     <VStack align="flex-start" spacing={8} maxWidth="520px" width="100%">
-      <StatusBadge label="Channel terbuka" tone="amber" />
+      <StatusBadge label="Open channel" tone="magenta" />
       <Text
         fontFamily="var(--font-inter), sans-serif"
         fontSize="md"
         lineHeight="relaxed"
         color="dim"
       >
-        Cara paling langsung untuk menghubungi {site.name} adalah lewat
-        kanal di bawah ini.
+        The most direct way to reach {site.name} is through the channels
+        below.
       </Text>
       <VStack align="stretch" spacing={4} width="100%">
         {channels.map((channel) => (

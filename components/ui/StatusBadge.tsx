@@ -2,7 +2,7 @@ import { Box, HStack, Text } from "@chakra-ui/react";
 
 type StatusBadgeProps = {
   label: string;
-  tone?: "phosphor" | "amber" | "dim";
+  tone?: "phosphor" | "amber" | "magenta" | "violet" | "cyan" | "dim";
 };
 
 export default function StatusBadge({

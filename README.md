@@ -14,12 +14,35 @@ Open [http://localhost:3000](http://localhost:3000).
 ## Structure
 
 - `app/` — routes: home, `projects`, `about`, `contact`
+- `app/robots.ts` — generates `robots.txt` at build time
+- `app/sitemap.ts` — generates `sitemap.xml` at build time
+- `app/opengraph-image.tsx` — generates the shared Open Graph / Twitter card image at build time
 - `components/layout` — NavBar, Footer
 - `components/ui` — InstrumentReadout, StatusBadge, SectionHeading
 - `components/sections` — HeroSection, ProjectCard, ProjectGrid, AboutContent, ContactForm
 - `theme/` — custom Chakra theme (colors, typography, component variants)
 - `lib/projects.ts` — typed project data source
-- `lib/site.ts` — owner/site metadata
+- `lib/site.ts` — owner/site metadata, also used as the single source of truth for SEO copy (titles, description, keywords)
+
+## Theming
+
+The palette stays dark (`void`/`panel`) but uses a vibrant "signal spectrum" accent system instead of a single phosphor color:
+
+- `theme/foundations/colors.ts` exports the base colors (`phosphor`, `amber`, `cyan`, `violet`, `magenta`) plus a `gradients` object (`signalSpectrum`, `auroraGlow`, `panelBorder`) reused across the app.
+- The hero name and primary CTA (`Button` variant `spectrumSolid`) use `gradients.signalSpectrum`.
+- The body background carries a faint multi-color `auroraGlow` radial gradient for ambient depth.
+- Project cards reveal a gradient border-glow on hover (`theme/components/Card.ts`), and each stack tag in `InstrumentReadout` cycles through the spectrum colors instead of one static accent.
+- `StatusBadge` and `SectionHeading` accept a `tone` / `eyebrowColor` prop so each page section can carry a different accent from the same palette.
+
+## SEO
+
+- Each route (`/`, `/projects`, `/about`, `/contact`) sets its own `title`, `description`, canonical URL, and Open Graph fields via the App Router `metadata` export — nothing relies only on the root default.
+- `metadataBase` is set from `site.website`, so relative canonical/OG URLs resolve correctly wherever the site is deployed.
+- `app/opengraph-image.tsx` renders a single 1200×630 PNG at build time (via `next/og`) reused for both Open Graph and Twitter cards — no manual image upload needed. Edit that file to change the design.
+- `app/robots.ts` and `app/sitemap.ts` are generated as static `robots.txt` / `sitemap.xml` files at build time, fully compatible with static export.
+- Structured data: a `Person` JSON-LD block is injected in the root layout so search engines can associate the site with `site.name`, `site.role`, and the GitHub profile as `sameAs`.
+- Heading hierarchy: each page has exactly one `<h1>` (the hero title on `/`, or the page's `SectionHeading` with `as="h1"` on `/about`, `/contact`, `/projects`); sections below use `<h2>`, project cards use `<h3>`.
+- When updating name, role, bio, or URLs, edit `lib/site.ts` once — titles, descriptions, JSON-LD, and OG image text all derive from it.
 
 ## Adding a new project
 

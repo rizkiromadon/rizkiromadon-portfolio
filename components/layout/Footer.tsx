@@ -1,4 +1,4 @@
-import { Box, Flex, Link as ChakraLink, Text } from "@chakra-ui/react";
+import { Box, Flex, HStack, Link as ChakraLink, Text } from "@chakra-ui/react";
 import site from "@/lib/site";
 
 export default function Footer() {
@@ -19,14 +19,23 @@ export default function Footer() {
         justify="space-between"
         gap={2}
       >
-        <Text
-          fontFamily="var(--font-space-mono), monospace"
-          fontSize="xs"
-          letterSpacing="wide"
-          color="dim"
-        >
-          {site.location.toUpperCase()} · TRANSMITTING
-        </Text>
+        <HStack spacing={2}>
+          <Box
+            width="6px"
+            height="6px"
+            borderRadius="full"
+            bg="phosphor"
+            boxShadow="0 0 6px 1px rgba(143,227,207,0.8)"
+          />
+          <Text
+            fontFamily="var(--font-space-mono), monospace"
+            fontSize="xs"
+            letterSpacing="wide"
+            color="dim"
+          >
+            {site.location.toUpperCase()} · TRANSMITTING
+          </Text>
+        </HStack>
         <ChakraLink
           href={site.github}
           isExternal
@@ -34,7 +43,7 @@ export default function Footer() {
           fontSize="xs"
           letterSpacing="wide"
           color="dim"
-          _hover={{ color: "phosphor", textDecoration: "none" }}
+          _hover={{ color: "cyan", textDecoration: "none" }}
         >
           {site.githubHandle}
         </ChakraLink>
