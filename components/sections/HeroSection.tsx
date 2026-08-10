@@ -1,19 +1,20 @@
 "use client";
 
 import { Box, Button, HStack, Heading, Text, VStack } from "@chakra-ui/react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, type Transition } from "framer-motion";
 import NextLink from "next/link";
 import site from "@/lib/site";
+
+const heroTransition: Transition = { duration: 0.6, ease: "easeOut" };
 
 export default function HeroSection() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <Box
-      as={motion.div}
+    <motion.div
       initial={shouldReduceMotion ? false : { opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
+      transition={heroTransition}
     >
       <VStack align="flex-start" spacing={6} paddingY={{ base: 16, md: 28 }}>
         <Text
@@ -61,6 +62,6 @@ export default function HeroSection() {
           marginTop={4}
         />
       </VStack>
-    </Box>
+    </motion.div>
   );
 }
