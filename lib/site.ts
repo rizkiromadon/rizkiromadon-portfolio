@@ -6,6 +6,7 @@ const site = {
   websiteLabel: "rizkiromadon.eu.cc",
   location: "Indonesia",
   role: "Backend-leaning Software Engineer",
+  status: "Self-taught developer",
   bio: "I build backend systems and the interfaces around them, with a focus on Go and TypeScript.",
   titleTemplate: "%s — Rizki Romadon",
   defaultTitle: "Rizki Romadon — Backend-leaning Software Engineer",

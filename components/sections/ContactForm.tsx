@@ -21,15 +21,27 @@ export default function ContactForm() {
   return (
     <VStack align="flex-start" spacing={8} maxWidth="520px" width="100%">
       <StatusBadge label="Open channel" tone="magenta" />
-      <Text
-        fontFamily="var(--font-inter), sans-serif"
-        fontSize="md"
-        lineHeight="relaxed"
-        color="dim"
-      >
-        The most direct way to reach {site.name} is through the channels
-        below.
-      </Text>
+      <VStack align="flex-start" spacing={3}>
+        <Text
+          fontFamily="var(--font-inter), sans-serif"
+          fontSize="md"
+          lineHeight="relaxed"
+          color="signal"
+        >
+          The most direct way to reach {site.name} is through the channels
+          below.
+        </Text>
+        <Text
+          fontFamily="var(--font-inter), sans-serif"
+          fontSize="sm"
+          lineHeight="relaxed"
+          color="dim"
+        >
+          GitHub is the best place to follow ongoing work — issues, pull
+          requests, and comments on any repository are welcome. For anything
+          else, the website links to other ways to get in touch.
+        </Text>
+      </VStack>
       <VStack align="stretch" spacing={4} width="100%">
         {channels.map((channel) => (
           <Box

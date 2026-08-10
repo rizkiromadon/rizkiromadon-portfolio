@@ -49,6 +49,17 @@ export default function HeroSection() {
           {site.bio} Logging projects from {site.location}, like an observer
           tracking signals from the observatory.
         </Text>
+        <HStack
+          spacing={2}
+          fontFamily="var(--font-space-mono), monospace"
+          fontSize="xs"
+          letterSpacing="wider"
+          textTransform="uppercase"
+          color="dim"
+        >
+          <Box width="6px" height="6px" bg="phosphor" flexShrink={0} />
+          <Text as="span">{site.status}</Text>
+        </HStack>
         <HStack spacing={4} paddingTop={2}>
           <Button as={NextLink} href="/projects" variant="spectrumSolid">
             View Projects

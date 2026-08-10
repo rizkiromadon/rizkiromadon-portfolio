@@ -22,7 +22,7 @@ export default function HomePage() {
             View all →
           </ChakraLink>
         </Box>
-        <ProjectGrid />
+        <ProjectGrid variant="compact" />
       </VStack>
     </Box>
   );
